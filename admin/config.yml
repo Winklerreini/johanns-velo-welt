@@ -27,17 +27,17 @@ collections:
             label_singular: "Rad"
             add_to_top: true
             summary: "{{fields.name}}"
-            hint: "Neues Rad: oben auf „Hinzufügen“ klicken (es erscheint ganz vorne). Reihenfolge ändern: Eintrag am Griff ziehen. Die Nummern 01, 02, … vergibt die Webseite automatisch. Rechts im Fenster siehst du die Vorschau."
+            hint: "Neues Rad: oben auf „Hinzufügen“ klicken (es erscheint ganz vorne). Reihenfolge ändern: Eintrag am Griff ziehen. Die Nummern 01, 02, … vergibt die Webseite automatisch."
             fields:
               - { label: "Name / Modell", name: "name", widget: "string", hint: "z. B. Conway Cairon" }
-              - { label: "Foto", name: "bild", widget: "image", required: false, hint: "Querformat (4:3) passt am besten. Bitte vorher auf höchstens 1 MB verkleinern. Ohne Foto erscheint ein Platzhalter." }
+              - { label: "Foto", name: "bild", widget: "image", required: false, hint: "Querformat (4:3) passt am besten. Bitte vorher auf höchstens 1 MB verkleinern. Ohne Foto erscheint ein Platzhalterbild." }
               - { label: "Kurzbeschreibung", name: "beschreibung", widget: "text", required: false, hint: "Ein bis zwei Sätze." }
               - { label: "Preis", name: "preis", widget: "string", required: false, hint: "Optional, z. B. ab 1.299 €" }
               - { label: "Kennzeichen", name: "tag", widget: "string", required: false, hint: "Kleines Schild über dem Text, z. B. Neu reingekommen, Gebraucht, Zum Testen da, Aktion." }
               - { label: "Kennzeichen rot hervorheben", name: "hervorheben", widget: "boolean", default: false, required: false, hint: "Für Neuheiten und Aktionen." }
               - { label: "Link-Text", name: "link_text", widget: "string", required: false, hint: "So erscheint der Link auf der Seite, z. B. qwic.de" }
               - { label: "Link-Adresse", name: "link_url", widget: "string", required: false, hint: "Komplette Adresse mit https://, z. B. https://www.qwic.de. Leer lassen, wenn es keinen Link geben soll." }
-              - { label: "Auf der Webseite anzeigen", name: "sichtbar", widget: "boolean", default: true, required: false, hint: "Ausschalten, wenn das Rad vorübergehend nicht gezeigt werden soll (z. B. verkauft). Es bleibt hier gespeichert." }
+              - { label: "Auf der Webseite anzeigen", name: "sichtbar", widget: "boolean", default: true, required: false, hint: "Ausschalten, wenn das Rad vorübergehend nicht gezeigt werden soll." }
 
   - name: "einstellungen"
     label: "Laden & Öffnungszeiten"
@@ -50,4 +50,27 @@ collections:
           - { label: "Telefon", name: "telefon", widget: "string", hint: "Wird oben rechts und im Kontaktbereich angezeigt. Der Anruf-Button übernimmt die Nummer automatisch." }
           - { label: "E-Mail", name: "email", widget: "string" }
           - { label: "Öffnungszeiten", name: "oeffnungszeiten", widget: "text", hint: "Eine Zeile pro Eintrag, mit Enter umbrechen, z. B. „Sa 10–14 Uhr“." }
-          - { label: "Hinweis-Banner", name: "banner", widget: "string", required: false, hint: "Erscheint als dunkle Leiste ganz oben auf der Webseite, z. B. „Betriebsferien vom 1.–14. August“. Leer lassen = kein Banner." }
+          - { label: "Hinweis-Banner", name: "banner", widget: "string", required: false, hint: "Erscheint als dunkle Leiste ganz oben auf der Webseite, z. B. „Betriebsferien vom 1.–14. August“." }
+
+  - name: "seiteninhalt"
+    label: "Startseite & Inhalte"
+    description: "Texte, Service-Boxen und der Promo-Block der Startseite bearbeiten."
+    files:
+      - name: "startseite"
+        label: "Startseite"
+        file: "content/site.json"
+        fields:
+          - { label: "Shop-Name", name: "site_name", widget: "string", hint: "Erscheint im Header links oben.", default: "Johanns Velo Welt" }
+          - { label: "Hero-Zeile 1", name: "hero_line_1", widget: "string", default: "VELO" }
+          - { label: "Hero-Zeile 2", name: "hero_line_2", widget: "string", default: "WELT" }
+          - { label: "Hero-Text", name: "hero_text", widget: "text", default: "Fahrräder und E-Bikes vieler Marken, gebrauchte Räder, JobRad-Leasing und Werkstatt – alles in der Hauptstraße 85." }
+          - { label: "Ausstellungsraum-Beschreibung", name: "showroom_text", widget: "text", default: "Bei uns stehen die Räder nicht im Katalog, sondern im Laden. Anschauen, aufsitzen, Probe fahren – und gleich mit uns über Ausstattung und Leasing sprechen." }
+          - { label: "Promo-Titel", name: "promo_title", widget: "string", default: "200 € Preisnachlass auf alle BZEN-Modelle" }
+          - { label: "Promo-Untertitel", name: "promo_subtitle", widget: "string", default: "Aktion vom 15. September bis 31. Oktober 2026" }
+          - label: "Leistungen"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Beschreibung", name: "text", widget: "text" }
