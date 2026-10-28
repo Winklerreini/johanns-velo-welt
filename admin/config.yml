@@ -2,18 +2,18 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
-  - name: "website"
+  - name: "einstellungen"
     label: "Webseite"
     files:
-      - name: "home"
-        label: "Startseite bearbeiten"
-        file: "index.html"
+      - name: "shop"
+        label: "Laden-Infos"
+        file: "content/shop.json"
         fields:
-          - label: "HTML Code"
-            name: "code"
-            widget: "code"
-            default_language: "html"
+          - { label: "Telefon", name: "telefon", widget: "string" }
+          - { label: "E-Mail", name: "email", widget: "string" }
+          - { label: "Öffnungszeiten", name: "oeffnungszeiten", widget: "text" }
+          - { label: "Hinweis-Banner", name: "banner", widget: "string", required: false }
