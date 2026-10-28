@@ -5,12 +5,6 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-# Fotos größer als ca. 2 MB werden abgelehnt (bitte vorher verkleinern)
-media_library:
-  name: default
-  config:
-    max_file_size: 2000000
-
 collections:
   - name: "raeder"
     label: "Räder"
