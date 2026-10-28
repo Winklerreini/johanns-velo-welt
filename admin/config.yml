@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "website"
+    label: "Webseite"
+    files:
+      - name: "home"
+        label: "Startseite bearbeiten"
+        file: "index.html"
+        fields:
+          - label: "HTML Code"
+            name: "code"
+            widget: "code"
+            default_language: "html"
