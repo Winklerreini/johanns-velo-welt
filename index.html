@@ -294,6 +294,80 @@ meas();go();
       .catch(function () {});
   </script>
 
+  <!-- Räder aus dem CMS (content/raeder.json) -->
+  <script>
+    (function () {
+      var grid = document.querySelector('#ausstellungsraum .grid');
+      if (!grid) return;
+
+      var PLACEHOLDER_SVG = '<svg viewBox="0 0 120 70" aria-hidden="true"><circle cx="24" cy="48" r="16"/><circle cx="96" cy="48" r="16"/><path d="M24 48 L46 22 H78 L96 48 M46 22 L58 48 H24 M58 48 L78 22 M42 14 H54 M76 14 H86 L78 22"/></svg><span>Foto folgt</span>';
+
+      function el(tag, cls, text) {
+        var e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (text) e.textContent = text;
+        return e;
+      }
+
+      function safeUrl(u) {
+        return typeof u === 'string' && /^(https?:\/\/|\/|#|mailto:|tel:)/i.test(u.trim()) ? u.trim() : '';
+      }
+
+      function buildCard(b, i) {
+        var card = el('div', 'card');
+
+        if (b.bild) {
+          var img = el('img', 'ph');
+          img.src = b.bild;
+          img.alt = b.name;
+          img.loading = 'lazy';
+          card.appendChild(img);
+        } else {
+          var ph = el('div', 'ph');
+          ph.setAttribute('role', 'img');
+          ph.setAttribute('aria-label', 'Platzhalter-Foto ' + b.name);
+          ph.innerHTML = PLACEHOLDER_SVG;
+          card.appendChild(ph);
+        }
+
+        card.appendChild(el('span', 'no', (i + 1 < 10 ? '0' : '') + (i + 1)));
+        card.appendChild(el('h3', '', b.name));
+        if (b.tag) card.appendChild(el('span', b.hervorheben ? 'tag hot' : 'tag', b.tag));
+        if (b.beschreibung) card.appendChild(el('p', '', b.beschreibung));
+
+        if (b.preis) {
+          var pr = el('p');
+          var st = el('strong', '', b.preis);
+          st.style.color = 'var(--ink)';
+          pr.style.marginTop = '8px';
+          pr.appendChild(st);
+          card.appendChild(pr);
+        }
+
+        var url = safeUrl(b.link_url);
+        if (url) {
+          var a = el('a', 'more', (b.link_text || 'Mehr erfahren') + '  →');
+          a.href = url;
+          a.rel = 'noopener';
+          card.appendChild(a);
+        }
+        return card;
+      }
+
+      fetch('/content/raeder.json', { cache: 'no-store' })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d || !Array.isArray(d.raeder)) return;
+          var list = d.raeder.filter(function (b) {
+            return b && b.name && b.sichtbar !== false;
+          });
+          while (grid.firstChild) grid.removeChild(grid.firstChild);
+          list.forEach(function (b, i) { grid.appendChild(buildCard(b, i)); });
+        })
+        .catch(function () {});
+    })();
+  </script>
+
   <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>

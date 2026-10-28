@@ -5,7 +5,37 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+# Fotos größer als ca. 2 MB werden abgelehnt (bitte vorher verkleinern)
+media_library:
+  name: default
+  config:
+    max_file_size: 2000000
+
 collections:
+  - name: "raeder"
+    label: "Räder"
+    files:
+      - name: "raeder"
+        label: "Räder im Ausstellungsraum"
+        file: "content/raeder.json"
+        fields:
+          - label: "Räder"
+            name: "raeder"
+            widget: "list"
+            label_singular: "Rad"
+            summary: "{{fields.name}}"
+            hint: "Mit „Rad hinzufügen“ ein neues Rad anlegen. Die Reihenfolge lässt sich per Ziehen ändern. Die Nummern (01, 02, …) werden automatisch vergeben."
+            fields:
+              - { label: "Name / Modell", name: "name", widget: "string" }
+              - { label: "Kennzeichen (z. B. Neu reingekommen, Gebraucht, Zum Testen da)", name: "tag", widget: "string", required: false }
+              - { label: "Kennzeichen rot hervorheben", name: "hervorheben", widget: "boolean", default: false, required: false }
+              - { label: "Beschreibung", name: "beschreibung", widget: "text", required: false }
+              - { label: "Preis (z. B. ab 1.299 €)", name: "preis", widget: "string", required: false }
+              - { label: "Foto (ohne Foto erscheint ein Platzhalter)", name: "bild", widget: "image", required: false }
+              - { label: "Link-Text (z. B. qwic.de)", name: "link_text", widget: "string", required: false }
+              - { label: "Link-Adresse (z. B. https://www.qwic.de)", name: "link_url", widget: "string", required: false }
+              - { label: "Auf der Webseite anzeigen", name: "sichtbar", widget: "boolean", default: true, required: false }
+
   - name: "einstellungen"
     label: "Webseite"
     files:

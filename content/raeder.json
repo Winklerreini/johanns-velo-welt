@@ -1,0 +1,70 @@
+{
+  "raeder": [
+    {
+      "name": "Conway Cairon",
+      "tag": "Neu reingekommen",
+      "hervorheben": true,
+      "beschreibung": "E-Bikes der Modellreihe Cairon, frisch im Showroom.",
+      "preis": "",
+      "bild": "",
+      "link_text": "",
+      "link_url": "",
+      "sichtbar": true
+    },
+    {
+      "name": "Qio",
+      "tag": "Neu reingekommen",
+      "hervorheben": true,
+      "beschreibung": "Das Konzept-Kompaktrad für große und kleine Personen – in verschiedenen Farben und Ausstattungen.",
+      "preis": "",
+      "bild": "",
+      "link_text": "qio-bikes.com",
+      "link_url": "https://www.qio-bikes.com",
+      "sichtbar": true
+    },
+    {
+      "name": "Qwic",
+      "tag": "Wieder im Angebot",
+      "hervorheben": false,
+      "beschreibung": "Modellreihen Signal, Mira, Elan und Inter.",
+      "preis": "",
+      "bild": "",
+      "link_text": "qwic.de",
+      "link_url": "https://www.qwic.de",
+      "sichtbar": true
+    },
+    {
+      "name": "BZEN",
+      "tag": "Zum Testen da",
+      "hervorheben": false,
+      "beschreibung": "Vier Modelle als Testräder – einfach vorbeikommen und ausprobieren.",
+      "preis": "",
+      "bild": "",
+      "link_text": "bzenbikes.com",
+      "link_url": "https://www.bzenbikes.com",
+      "sichtbar": true
+    },
+    {
+      "name": "Urtopia",
+      "tag": "Carbon",
+      "hervorheben": false,
+      "beschreibung": "Carbon 1 Pro und Carbon 1 St.",
+      "preis": "",
+      "bild": "",
+      "link_text": "newurtopia.de",
+      "link_url": "https://www.newurtopia.de",
+      "sichtbar": true
+    },
+    {
+      "name": "INTEC",
+      "tag": "Nach Wunsch",
+      "hervorheben": false,
+      "beschreibung": "Trekking-, Gravel- und Rennräder, ganz nach Kundenwunsch konfiguriert.",
+      "preis": "",
+      "bild": "",
+      "link_text": "ra-co.de",
+      "link_url": "https://www.ra-co.de",
+      "sichtbar": true
+    }
+  ]
+}
