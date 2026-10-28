@@ -2,12 +2,20 @@ backend:
   name: git-gateway
   branch: main
 
+# Deutsche Oberfläche
+locale: "de"
+
+# Oben im Admin-Bereich erscheint ein Link zur Webseite
+site_url: https://johannsvelowelt.netlify.app
+display_url: https://johannsvelowelt.netlify.app
+
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "raeder"
     label: "Räder"
+    description: "Räder im Ausstellungsraum hinzufügen, ändern, umsortieren oder ausblenden. Änderungen erscheinen etwa eine Minute nach dem Veröffentlichen auf der Webseite."
     files:
       - name: "raeder"
         label: "Räder im Ausstellungsraum"
@@ -17,27 +25,29 @@ collections:
             name: "raeder"
             widget: "list"
             label_singular: "Rad"
+            add_to_top: true
             summary: "{{fields.name}}"
-            hint: "Mit „Rad hinzufügen“ ein neues Rad anlegen. Die Reihenfolge lässt sich per Ziehen ändern. Die Nummern (01, 02, …) werden automatisch vergeben."
+            hint: "Neues Rad: oben auf „Hinzufügen“ klicken (es erscheint ganz vorne). Reihenfolge ändern: Eintrag am Griff ziehen. Die Nummern 01, 02, … vergibt die Webseite automatisch. Rechts im Fenster siehst du die Vorschau."
             fields:
-              - { label: "Name / Modell", name: "name", widget: "string" }
-              - { label: "Kennzeichen (z. B. Neu reingekommen, Gebraucht, Zum Testen da)", name: "tag", widget: "string", required: false }
-              - { label: "Kennzeichen rot hervorheben", name: "hervorheben", widget: "boolean", default: false, required: false }
-              - { label: "Beschreibung", name: "beschreibung", widget: "text", required: false }
-              - { label: "Preis (z. B. ab 1.299 €)", name: "preis", widget: "string", required: false }
-              - { label: "Foto (ohne Foto erscheint ein Platzhalter)", name: "bild", widget: "image", required: false }
-              - { label: "Link-Text (z. B. qwic.de)", name: "link_text", widget: "string", required: false }
-              - { label: "Link-Adresse (z. B. https://www.qwic.de)", name: "link_url", widget: "string", required: false }
-              - { label: "Auf der Webseite anzeigen", name: "sichtbar", widget: "boolean", default: true, required: false }
+              - { label: "Name / Modell", name: "name", widget: "string", hint: "z. B. Conway Cairon" }
+              - { label: "Foto", name: "bild", widget: "image", required: false, hint: "Querformat (4:3) passt am besten. Bitte vorher auf höchstens 1 MB verkleinern. Ohne Foto erscheint ein Platzhalter." }
+              - { label: "Kurzbeschreibung", name: "beschreibung", widget: "text", required: false, hint: "Ein bis zwei Sätze." }
+              - { label: "Preis", name: "preis", widget: "string", required: false, hint: "Optional, z. B. ab 1.299 €" }
+              - { label: "Kennzeichen", name: "tag", widget: "string", required: false, hint: "Kleines Schild über dem Text, z. B. Neu reingekommen, Gebraucht, Zum Testen da, Aktion." }
+              - { label: "Kennzeichen rot hervorheben", name: "hervorheben", widget: "boolean", default: false, required: false, hint: "Für Neuheiten und Aktionen." }
+              - { label: "Link-Text", name: "link_text", widget: "string", required: false, hint: "So erscheint der Link auf der Seite, z. B. qwic.de" }
+              - { label: "Link-Adresse", name: "link_url", widget: "string", required: false, hint: "Komplette Adresse mit https://, z. B. https://www.qwic.de. Leer lassen, wenn es keinen Link geben soll." }
+              - { label: "Auf der Webseite anzeigen", name: "sichtbar", widget: "boolean", default: true, required: false, hint: "Ausschalten, wenn das Rad vorübergehend nicht gezeigt werden soll (z. B. verkauft). Es bleibt hier gespeichert." }
 
   - name: "einstellungen"
-    label: "Webseite"
+    label: "Laden & Öffnungszeiten"
+    description: "Telefon, E-Mail, Öffnungszeiten und ein optionaler Hinweis-Banner für die ganze Webseite."
     files:
       - name: "shop"
-        label: "Laden-Infos"
+        label: "Kontakt & Öffnungszeiten"
         file: "content/shop.json"
         fields:
-          - { label: "Telefon", name: "telefon", widget: "string" }
+          - { label: "Telefon", name: "telefon", widget: "string", hint: "Wird oben rechts und im Kontaktbereich angezeigt. Der Anruf-Button übernimmt die Nummer automatisch." }
           - { label: "E-Mail", name: "email", widget: "string" }
-          - { label: "Öffnungszeiten", name: "oeffnungszeiten", widget: "text" }
-          - { label: "Hinweis-Banner", name: "banner", widget: "string", required: false }
+          - { label: "Öffnungszeiten", name: "oeffnungszeiten", widget: "text", hint: "Eine Zeile pro Eintrag, mit Enter umbrechen, z. B. „Sa 10–14 Uhr“." }
+          - { label: "Hinweis-Banner", name: "banner", widget: "string", required: false, hint: "Erscheint als dunkle Leiste ganz oben auf der Webseite, z. B. „Betriebsferien vom 1.–14. August“. Leer lassen = kein Banner." }
