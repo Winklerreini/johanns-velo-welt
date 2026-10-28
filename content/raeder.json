@@ -1,6 +1,17 @@
 {
   "raeder": [
     {
+      "hervorheben": false,
+      "link_url": "link",
+      "name": "Samuel Rad",
+      "beschreibung": "Das Ist ein TEST",
+      "preis": "9999€",
+      "link_text": "link.test",
+      "sichtbar": true,
+      "tag": "Kennzeichnung test",
+      "bild": "/images/uploads/acid-trip-rainbow-gif-by-feliks-tomasz-konczakowski.gif"
+    },
+    {
       "hervorheben": true,
       "link_url": "",
       "name": "Conway Cairon",
