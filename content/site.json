@@ -1,0 +1,28 @@
+{
+  "site_name": "Johanns Velo Welt",
+  "hero_line_1": "VELO",
+  "hero_line_2": "WELT",
+  "hero_text": "Fahrräder und E-Bikes vieler Marken, gebrauchte Räder, JobRad-Leasing und Werkstatt – alles in der Hauptstraße 85.",
+  "showroom_text": "Bei uns stehen die Räder nicht im Katalog, sondern im Laden. Anschauen, aufsitzen, Probe fahren – und gleich mit uns über Ausstattung und Leasing sprechen.",
+  "promo_title": "200 € Preisnachlass auf alle BZEN-Modelle",
+  "promo_subtitle": "Aktion vom 15. September bis 31. Oktober 2026",
+  "footer_tagline": "Gute Fahrt – jeden Tag",
+  "services": [
+    {
+      "title": "Fahrräder & E-Bikes",
+      "text": "Ein breites Spektrum an Fahrradtypen und Marken."
+    },
+    {
+      "title": "Gebrauchte Räder",
+      "text": "Gebrauchte Fahrräder, mit und ohne Motor."
+    },
+    {
+      "title": "JobRad-Leasing",
+      "text": "Dein Rad bequem über JobRad leasen."
+    },
+    {
+      "title": "Werkstatt & Verleih",
+      "text": "Reparatur, Service und Verleih rund ums Fahrrad."
+    }
+  ]
+}
