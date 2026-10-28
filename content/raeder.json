@@ -1,70 +1,70 @@
 {
   "raeder": [
     {
-      "name": "Conway Cairon",
-      "tag": "Neu reingekommen",
       "hervorheben": true,
+      "link_url": "",
+      "name": "Conway Cairon",
       "beschreibung": "E-Bikes der Modellreihe Cairon, frisch im Showroom.",
       "preis": "",
-      "bild": "",
       "link_text": "",
-      "link_url": "",
-      "sichtbar": true
+      "sichtbar": true,
+      "tag": "Neu reingekommen",
+      "bild": "/images/uploads/4e1f614a3eec8f601fc3e2f76973fc46.jpg"
     },
     {
-      "name": "Qio",
-      "tag": "Neu reingekommen",
       "hervorheben": true,
+      "link_url": "https://www.qio-bikes.com",
+      "name": "Qio",
       "beschreibung": "Das Konzept-Kompaktrad für große und kleine Personen – in verschiedenen Farben und Ausstattungen.",
       "preis": "",
-      "bild": "",
       "link_text": "qio-bikes.com",
-      "link_url": "https://www.qio-bikes.com",
-      "sichtbar": true
+      "sichtbar": true,
+      "tag": "Neu reingekommen",
+      "bild": ""
     },
     {
-      "name": "Qwic",
-      "tag": "Wieder im Angebot",
       "hervorheben": false,
+      "link_url": "https://www.qwic.de",
+      "name": "Qwic",
       "beschreibung": "Modellreihen Signal, Mira, Elan und Inter.",
       "preis": "",
-      "bild": "",
       "link_text": "qwic.de",
-      "link_url": "https://www.qwic.de",
-      "sichtbar": true
+      "sichtbar": true,
+      "tag": "Wieder im Angebot",
+      "bild": ""
     },
     {
-      "name": "BZEN",
-      "tag": "Zum Testen da",
       "hervorheben": false,
+      "link_url": "https://www.bzenbikes.com",
+      "name": "BZEN",
       "beschreibung": "Vier Modelle als Testräder – einfach vorbeikommen und ausprobieren.",
       "preis": "",
-      "bild": "",
       "link_text": "bzenbikes.com",
-      "link_url": "https://www.bzenbikes.com",
-      "sichtbar": true
+      "sichtbar": true,
+      "tag": "Zum Testen da",
+      "bild": ""
     },
     {
-      "name": "Urtopia",
-      "tag": "Carbon",
       "hervorheben": false,
+      "link_url": "https://www.newurtopia.de",
+      "name": "Urtopia",
       "beschreibung": "Carbon 1 Pro und Carbon 1 St.",
       "preis": "",
-      "bild": "",
       "link_text": "newurtopia.de",
-      "link_url": "https://www.newurtopia.de",
-      "sichtbar": true
+      "sichtbar": true,
+      "tag": "Carbon",
+      "bild": ""
     },
     {
-      "name": "INTEC",
-      "tag": "Nach Wunsch",
       "hervorheben": false,
+      "link_url": "https://www.ra-co.de",
+      "name": "INTEC",
       "beschreibung": "Trekking-, Gravel- und Rennräder, ganz nach Kundenwunsch konfiguriert.",
       "preis": "",
-      "bild": "",
       "link_text": "ra-co.de",
-      "link_url": "https://www.ra-co.de",
-      "sichtbar": true
+      "sichtbar": true,
+      "tag": "Nach Wunsch",
+      "bild": ""
     }
   ]
 }
