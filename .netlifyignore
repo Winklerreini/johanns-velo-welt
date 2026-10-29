@@ -1,0 +1,12 @@
+node_modules/
+db/
+lib/
+netlify/
+tests/
+package.json
+package-lock.json
+drizzle.config.ts
+.netlify/
+
+test-results/
+playwright-report/

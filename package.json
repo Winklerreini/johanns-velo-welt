@@ -1,0 +1,43 @@
+{
+  "name": "johanns-velo-welt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test tests/builder.spec.mjs",
+    "typecheck": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --esModuleInterop --skipLibCheck netlify/functions/builder.mts netlify/functions/media.mts db/schema.ts db/index.ts lib/builder.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Winklerreini/johanns-velo-welt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Winklerreini/johanns-velo-welt/issues"
+  },
+  "homepage": "https://github.com/Winklerreini/johanns-velo-welt#readme",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.7",
+    "@netlify/database": "^2.0.1",
+    "@netlify/functions": "^6.0.3",
+    "@netlify/identity": "^2.0.0",
+    "drizzle-orm": "^1.0.0-beta.22",
+    "grapesjs": "^0.23.8",
+    "sanitize-html": "^2.18.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/sanitize-html": "^2.16.2",
+    "drizzle-kit": "^1.0.0-beta.22",
+    "typescript": "^7.0.2"
+  },
+  "private": true,
+  "overrides": {
+    "sanitize-html": {
+      "htmlparser2": "10.1.0"
+    }
+  }
+}

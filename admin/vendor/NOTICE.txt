@@ -1,0 +1,5 @@
+GrapesJS 0.23.8 — BSD-3-Clause — https://github.com/GrapesJS/grapesjs
+@netlify/identity 2.0.0 — MIT — https://github.com/netlify/primitives
+Identity's browser transport is distributed from its gotrue-js dependency (MIT).
+The application uses @netlify/identity for all authentication operations.
+The identity module's transport import points to the locally distributed browser dependency.
