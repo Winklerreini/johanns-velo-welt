@@ -11,7 +11,7 @@ export default async (req: Request) => {
     if (!publicRead) {
       const user = await getUser();
       if (!user) return reply({ error: 'Bitte erneut anmelden.' }, 401);
-      if (!user.roles?.some(role => ['admin', 'editor'].includes(role))) return reply({ error: 'Dein Konto benötigt die Rolle admin oder editor. Diese kann in Netlify unter Identity beim Benutzer eingetragen werden.' }, 403);
+      if (user.role !== 'admin' && !user.roles?.some(role => ['admin', 'editor'].includes(role))) return reply({ error: 'Dein Konto benötigt die Rolle admin oder editor. Diese kann in Netlify unter Identity beim Benutzer eingetragen werden.' }, 403);
     }
     if (!['GET', 'PUT'].includes(req.method)) return reply({ error: 'Methode nicht erlaubt.' }, 405);
     const db = database();

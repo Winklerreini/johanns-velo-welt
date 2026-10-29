@@ -12,7 +12,7 @@ export default async (req: Request) => {
   if (req.method !== 'POST') return new Response('Method not allowed', { status: 405 });
   const user = await getUser();
   if (!user) return new Response('Bitte anmelden.', { status: 401 });
-  if (!user.roles?.some(role => ['admin', 'editor'].includes(role))) return new Response('Rolle admin oder editor erforderlich.', { status: 403 });
+  if (user.role !== 'admin' && !user.roles?.some(role => ['admin', 'editor'].includes(role))) return new Response('Rolle admin oder editor erforderlich.', { status: 403 });
   if (req.headers.get('origin') !== new URL(req.url).origin) return new Response('Forbidden', { status: 403 });
   try {
     const bytes = new Uint8Array(await req.arrayBuffer());
