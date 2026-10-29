@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "same-origin"
+[[headers]]
+  for = "/admin/template.html"
+  [headers.values]
+    Content-Security-Policy = "script-src 'none'; object-src 'none'"

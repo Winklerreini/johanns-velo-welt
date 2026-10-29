@@ -1,14 +1,22 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <title>Johanns Velo Welt - Admin</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Website-Werkstatt · Johanns Velo Welt</title>
+<link rel="stylesheet" href="/admin/vendor/grapes.min.css"><link rel="stylesheet" href="/admin/builder.css">
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script src="/admin/preview.js"></script>
-</body>
-</html>
+<section id="login-screen" class="gate">
+  <div class="gate-card"><span class="eyebrow">JOHANNS VELO WELT / ADMIN</span><h1>Deine Website.<br>Dein Werkzeug.</h1><p>Gestalte Inhalte und Layout direkt auf der Seite. Vom einzelnen Wort bis zum ganzen Abschnitt.</p>
+  <form id="login-form"><label>E-Mail<input id="email" type="email" autocomplete="username" required></label><label>Passwort<input id="password" type="password" autocomplete="current-password" required minlength="8"></label><button class="primary" type="submit">Werkstatt öffnen →</button></form>
+  <form id="password-form" hidden><label>Neues Passwort<input id="new-password" type="password" autocomplete="new-password" minlength="8" required></label><button class="primary">Passwort speichern</button></form>
+  <button id="recover" class="text-button">Passwort vergessen</button><p id="login-message" role="status"></p><a href="/">Zur Website ↗</a></div>
+</section>
+<div id="workspace" hidden>
+  <header class="topbar"><div class="brand">VELO<span>Website-Werkstatt</span></div><div class="device-group" aria-label="Vorschaugröße"><button data-device="Desktop" class="active">Desktop</button><button data-device="Tablet">Tablet</button><button data-device="Mobil">Mobil</button></div><div class="actions"><button id="undo" title="Rückgängig (Strg+Z)">↶</button><button id="redo" title="Wiederholen (Strg+Umschalt+Z)">↷</button><button id="preview">Vorschau</button><button id="save">Entwurf speichern</button><button id="publish" class="primary">Veröffentlichen ↗</button></div></header>
+  <div class="subbar"><span id="status" role="status">Website wird geladen …</span><div><button id="help">Anleitung</button><button id="export">Export</button><button id="restore">Online-Version laden</button><button id="logout">Abmelden</button></div></div>
+  <main class="studio"><aside class="toolbox"><div class="sidebar-intro"><span class="eyebrow">DEIN BAUKASTEN</span><h2>Raum für Ideen.</h2><p>Bausteine in die Seite ziehen. Doppelklick auf einen Text zum Schreiben.</p></div><div class="tabs" role="tablist"><button role="tab" data-tab="blocks" class="active">Bausteine</button><button role="tab" data-tab="layers">Ebenen</button><button role="tab" data-tab="design">Design</button><button role="tab" data-tab="traits">Element</button></div><div class="pane" id="blocks"></div><div class="pane" id="layers" hidden></div><div class="pane" id="design" hidden><div id="selectors"></div><div id="styles"></div></div><div class="pane" id="traits" hidden><p class="panel-hint">Element in der Seite auswählen. Hier änderst du Links, Bildbeschreibungen und Sprungmarken.</p><div id="properties"></div></div><label class="page-title">Seitentitel<input id="page-title" maxlength="180" value="Johanns Velo Welt"></label></aside><div class="canvas-wrap"><div id="editor"></div></div></main>
+</div>
+<dialog id="guide"><button id="close-help" class="dialog-close" aria-label="Anleitung schließen">×</button><span class="eyebrow">SO FUNKTIONIERT’S</span><h2>Vom Detail zum ganzen Layout.</h2><ol><li><strong>Inhalte:</strong> Text doppelt anklicken. Bilder doppelt anklicken, um sie zu ersetzen oder eigene Fotos hochzuladen (max. 4 MB).</li><li><strong>Aufbau:</strong> Bausteine auf die Seite ziehen. Elemente am Pfeilkreuz verschieben. In „Ebenen“ auch verschachtelte Elemente auswählen und umsortieren.</li><li><strong>Gestaltung:</strong> Element auswählen und unter „Design“ Spalten, Breite, Höhe, Abstände, Farben, Schrift und Position einstellen. „Element“ enthält Links, Alternativtexte und IDs.</li><li><strong>Mobil:</strong> Desktop, Tablet und Mobil prüfen. Änderungen im kleineren Ansichtsmodus gelten ab dieser Bildschirmbreite.</li><li><strong>Sichern:</strong> „Entwurf speichern“ hält Änderungen privat. „Veröffentlichen“ schaltet den aktuellen Stand sofort online. Export lädt eine HTML-Sicherung herunter.</li><li><strong>Zurück:</strong> Mit ↶ Änderungen rückgängig machen oder die zuletzt veröffentlichte Version laden. Nicht gespeicherte Änderungen gehen beim Verlassen verloren.</li></ol><p>Die bisherige Website ist vollständig als Ausgangsseite übernommen. Eingebettete Skripte und Formulare sind keine Bausteine; neue Kontaktmöglichkeiten lassen sich als Telefon- oder E-Mail-Link anlegen.</p></dialog>
+<script src="/admin/vendor/grapes.min.js"></script><script type="module" src="/admin/builder.js"></script>
+</body></html>
