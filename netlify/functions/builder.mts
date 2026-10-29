@@ -4,6 +4,18 @@ import { database } from '../../db/index.js';
 import { pages } from '../../db/schema.js';
 import { cleanPage } from '../../lib/builder.js';
 
+const hasRequiredBuilderRole = (user: any) => {
+  const rawRoles = [
+    user?.role,
+    ...(Array.isArray(user?.roles) ? user.roles : []),
+    ...(Array.isArray(user?.app_metadata?.roles) ? user.app_metadata.roles : []),
+    ...(Array.isArray(user?.app_metadata?.user_roles) ? user.app_metadata.user_roles : []),
+    user?.app_metadata?.admin,
+  ].filter(Boolean).map(String).map(value => value.toLowerCase());
+
+  return rawRoles.includes('admin') || rawRoles.includes('editor');
+};
+
 export default async (req: Request) => {
   const reply = (value: unknown, status = 200) => Response.json(value, { status, headers: { 'Cache-Control': 'no-store' } });
   try {
@@ -11,7 +23,7 @@ export default async (req: Request) => {
     if (!publicRead) {
       const user = await getUser();
       if (!user) return reply({ error: 'Bitte erneut anmelden.' }, 401);
-      if (user.role !== 'admin' && !user.roles?.some(role => ['admin', 'editor'].includes(role))) return reply({ error: 'Dein Konto benötigt die Rolle admin oder editor. Diese kann in Netlify unter Identity beim Benutzer eingetragen werden.' }, 403);
+      if (!hasRequiredBuilderRole(user)) return reply({ error: 'Dein Konto benötigt die Rolle admin oder editor. Diese kann in Netlify unter Identity beim Benutzer eingetragen werden.' }, 403);
     }
     if (!['GET', 'PUT'].includes(req.method)) return reply({ error: 'Methode nicht erlaubt.' }, 405);
     const db = database();

@@ -1,5 +1,18 @@
 import { getUser } from '@netlify/identity';
 import { getStore } from '@netlify/blobs';
+
+const hasRequiredMediaRole = (user: any) => {
+  const rawRoles = [
+    user?.role,
+    ...(Array.isArray(user?.roles) ? user.roles : []),
+    ...(Array.isArray(user?.app_metadata?.roles) ? user.app_metadata.roles : []),
+    ...(Array.isArray(user?.app_metadata?.user_roles) ? user.app_metadata.user_roles : []),
+    user?.app_metadata?.admin,
+  ].filter(Boolean).map(String).map(value => value.toLowerCase());
+
+  return rawRoles.includes('admin') || rawRoles.includes('editor');
+};
+
 export default async (req: Request) => {
   const store = getStore('builder-images');
   if (req.method === 'GET') {
@@ -12,13 +25,13 @@ export default async (req: Request) => {
   if (req.method !== 'POST') return new Response('Method not allowed', { status: 405 });
   const user = await getUser();
   if (!user) return new Response('Bitte anmelden.', { status: 401 });
-  if (user.role !== 'admin' && !user.roles?.some(role => ['admin', 'editor'].includes(role))) return new Response('Rolle admin oder editor erforderlich.', { status: 403 });
+  if (!hasRequiredMediaRole(user)) return new Response('Dein Konto benötigt die Rolle admin oder editor. Diese kann in Netlify unter Identity beim Benutzer eingetragen werden.', { status: 403 });
   if (req.headers.get('origin') !== new URL(req.url).origin) return new Response('Forbidden', { status: 403 });
   try {
     const bytes = new Uint8Array(await req.arrayBuffer());
     if (!bytes.length || bytes.length > 4000000) return new Response('Bild darf höchstens 4 MB groß sein.', { status: 400 });
     const sig = [...bytes.slice(0, 12)];
-    const type = sig[0] === 137 && sig[1] === 80 && sig[2] === 78 && sig[3] === 71 ? ['png', 'image/png'] : sig[0] === 255 && sig[1] === 216 && sig[2] === 255 ? ['jpg', 'image/jpeg'] : String.fromCharCode(...sig.slice(0, 6)).match(/^GIF8[79]a$/) ? ['gif', 'image/gif'] : String.fromCharCode(...sig.slice(0, 4)) === 'RIFF' && String.fromCharCode(...sig.slice(8, 12)) === 'WEBP' ? ['webp', 'image/webp'] : null;
+    const type = sig[0] === 137 && sig[1] === 80 && sig[2] === 78 && sig[3] === 71 ? ['png', 'image/png'] : sig[0] === 255 && sig[1] === 216 && sig[2] === 255 ? ['jpg', 'image/jpeg'] : String.from[...]
     if (!type) return new Response('Bitte PNG, JPG, GIF oder WebP verwenden.', { status: 400 });
     const id = crypto.randomUUID() + '.' + type[0];
     await store.set(id, bytes.buffer, { metadata: { contentType: type[1] } });
